@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="styles/styles.css">
+	<script type="text/javascript" src="scripts/calculate.js"></script>
+	<script type="text/javascript" src="scripts/ui.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div id=calc-type>
+		<span id="sandwich" class="sandwich sandwich-closed" onclick="toggleSandwich()"></span>
+<!-- 		<span id="calc-type-name">Standard</span> -->
+	</div>
+<!-- 	<button>A Button</button> -->
+	<div id=calculator>
+	<div id="calc-input" class="active-number"></div>
+	<div id="calc-result" class="inactive-number">0</div>
+	<div id=buttons>
+	<!-- First row -->
+	<span class="calculator-button row-one col-one" id="clear-e" onclick="clearCalc(false)">CE</span>
+	<span class="calculator-button row-one col-two" id="clear" onclick="clearCalc()">C</span>
+	<span class="calculator-button row-one col-three" id="left-paren">(</span>
+	<span class="calculator-button row-one col-four" id="right-paren">)</span>
+	<!-- Second Row -->
+	<span class="calculator-button row-two col-one" id="exp">x<sup>y</sup></span>
+	<span class="calculator-button row-two col-two" id="sqr">x<sup>2</sup></span>
+	<span class="calculator-button row-two col-three" id="sqrt">&Sqrt;</span>
+	<span class="calculator-button row-two col-four" id="divide">&div;</span>
+	<!-- Third row -->
+	<span class="calculator-button row-three col-one number" id="7">7</span>
+	<span class="calculator-button row-three col-two number" id="8">8</span>
+	<span class="calculator-button row-three col-three number" id="9">9</span>
+	<span class="calculator-button row-three col-four" id="mult">&times;</span>
+	<!-- Fourth row -->
+	<span class="calculator-button row-four col-one number" id="4">4</span>
+	<span class="calculator-button row-four col-two number" id="5">5</span>
+	<span class="calculator-button row-four col-three number" id="6">6</span>
+	<span class="calculator-button row-four col-four" id="sub">&minus;</span>
+	<!-- Fifth row -->
+	<span class="calculator-button row-five col-one number" id="1">1</span>
+	<span class="calculator-button row-five col-two number" id="2">2</span>
+	<span class="calculator-button row-five col-three number" id="3">3</span>
+	<span class="calculator-button row-five col-four" id="add">&plus;</span>
+	<!-- Sixth Row -->
+	<span class="calculator-button row-six col-one number" id="0">0</span>
+	<span class="calculator-button row-six col-two" id="pt" onclick="enterDigitOrPt('.')">.</span>
+	<span class="calculator-button row-six col-three" id="backspace" onclick="backSpace()">&#x232B;</span>
+	<span class="calculator-button row-six col-four" id="equals" onclick="equals()">=</span>
+	</div>
+	</div>
+	<div id=menu>
+		TCalc
+	</div>
+	<script>
+setUpNumbers();
+setUpOperators();
+	</script>
+</body>
+</html>
