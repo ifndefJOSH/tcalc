@@ -196,3 +196,15 @@ function equals() {
 	setOutActive(true);
 	nextFunction = null;
 }
+
+function e() {
+	document.getElementById('calc-input').innerHTML = Math.E;
+	setOutActive(false);
+	toggleSandwich();
+}
+
+function pi() {
+	document.getElementById('calc-input').innerHTML = Math.PI
+	setOutActive(false);
+	toggleSandwich();
+}

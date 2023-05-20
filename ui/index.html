@@ -4,9 +4,9 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="styles/styles.css">
-	<script type="text/javascript" src="scripts/calculate.js"></script>
 	<script type="text/javascript" src="scripts/ui.js"></script>
-	<title>Document</title>
+	<script type="text/javascript" src="scripts/calculate.js"></script>
+	<title>TCalc - A JavaScript Calculator</title>
 </head>
 <body>
 	<div id=calc-type>
@@ -21,8 +21,8 @@
 	<!-- First row -->
 	<span class="calculator-button row-one col-one" id="clear-e" onclick="clearCalc(false)">CE</span>
 	<span class="calculator-button row-one col-two" id="clear" onclick="clearCalc()">C</span>
-	<span class="calculator-button row-one col-three" id="left-paren">(</span>
-	<span class="calculator-button row-one col-four" id="right-paren">)</span>
+	<span class="calculator-button row-one col-three disabled" id="left-paren">(</span>
+	<span class="calculator-button row-one col-four disabled" id="right-paren">)</span>
 	<!-- Second Row -->
 	<span class="calculator-button row-two col-one" id="exp">x<sup>y</sup></span>
 	<span class="calculator-button row-two col-two" id="sqr">x<sup>2</sup></span>
@@ -51,7 +51,9 @@
 	</div>
 	</div>
 	<div id=menu>
-		TCalc
+		<div id=menu-header>TCalc</div>
+		<a class=menu-item onclick="e()">Insert Euler's Number</a>
+		<a class=menu-item onclick="pi()">Insert Pi</a>
 	</div>
 	<script>
 setUpNumbers();
