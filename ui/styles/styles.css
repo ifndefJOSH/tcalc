@@ -90,6 +90,7 @@ body {
 	bottom: 0px;
 	left: 0px;
 	width: 100%;
+	overflow: hidden;
 }
 
 /*#calc-type {
@@ -176,13 +177,20 @@ sup {
 
 #calc-input, #calc-result {
 	display: flex;
-	justify-content: right;
 	padding: 10px;
+	justify-content: right;
 	transition: all 0.1s ease-in;
 }
 
+#numbers {
+	display: flex;
+	justify-content: right;
+	flex-direction: column;
+}
+
 .active-number {
-	font-size: 6vh;
+	font-size: min(6vh, 6vw);
+/* 	max-width: 100%; */
 }
 
 .inactive-number {

@@ -6,6 +6,10 @@ var outIsActive = false;
 // The next function to execute when we hit equals or the next operator
 var nextFunction = null;
 
+var nextCalculation = false;
+
+// let precision = 6;
+
 function setOutActive(active) {
 	let inElem = document.getElementById('calc-input');
 	let outElem = document.getElementById('calc-result');
@@ -38,6 +42,7 @@ function clearCalc(result=true) {
 }
 
 function enterDigitOrPt(inpt) {
+	// nextCalculation = true;
 	setOutActive(false);
 	let inElement = document.getElementById('calc-input');
 	// Can only have one pt
@@ -146,18 +151,27 @@ function operatorOneOperand(f) {
 	// console.log("operatorOneOperand");
 	// Ignores the last result and uses the current input buffer
 	let inElem = document.getElementById('calc-input');
-	let inputStr = inElem.innerHTML;
+	var inputStr = inElem.innerHTML;
+	// So we can chain calculations
+	if (inputStr == "") {
+		inputStr = document.getElementById('calc-result').innerHTML;
+	}
 	let inputValue = Number.parseFloat(inputStr);
 	let out = f(inputValue);
 	let outElem = document.getElementById('calc-result');
 	outElem.innerHTML = out;
 	inElem.innerHTML = ""
 	setOutActive(true);
+	// calculationComplete = false;
 }
 
-function operatorTwoOperands(f, defaultFirstOperand = 1) {
+function operatorTwoOperands(f, defaultOperand = 1) {
 	let inElem = document.getElementById('calc-input');
 	let outElem = document.getElementById('calc-result');
+	if (nextCalculation) {
+		outElem.innerHTML = "";
+		// calculationComplete = false;
+	}
 	let inputStr1 = outElem.innerHTML;
 	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputStr2 = inElem.innerHTML;
@@ -171,7 +185,7 @@ function operatorTwoOperands(f, defaultFirstOperand = 1) {
 			outElem.innerHTML = inputStr2;
 		}
 		else {
-			outElem.innerHTML = defaultFirstOperand;
+			outElem.innerHTML = defaultOperand;
 		}
 	}
 	inElem.innerHTML = "";
@@ -195,6 +209,7 @@ function equals() {
 	inElem.innerHTML = "";
 	setOutActive(true);
 	nextFunction = null;
+	// calculationComplete = true;
 }
 
 function e() {
