@@ -172,7 +172,15 @@ function operatorOneOperand(f) {
 	let inputValue = Number.parseFloat(inputStr);
 	let out = f(inputValue);
 	let outElem = document.getElementById('calc-result');
-	outElem.innerHTML = out;
+	if (out == Number.POSITIVE_INFINITY) {
+		outElem.innerHTML = "&infin;";
+	}
+	else if (out == Number.NEGATIVE_INFINITY) {
+		outElem.innerHTML = "-&infin;";
+	}
+	else {
+		outElem.innerHTML = out;
+	}
 	inElem.innerHTML = ""
 	setOutActive(true);
 	// calculationComplete = false;
@@ -188,6 +196,9 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 	}
 	let inputStr1 = outElem.innerHTML;
 	let inputStr2 = inElem.innerHTML;
+	if (inputStr1 == "") {
+			outElem.innerHTML = defaultOperand;
+	}
 	if (inputStr2 == "") {
 		nextFunction = f;
 		return;
@@ -195,16 +206,23 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputValue2 = Number.parseFloat(inputStr2);
 	if (nextFunction != null) {
-		outElem.innerHTML = nextFunction(inputValue1, inputValue2);
+		let outVal = nextFunction(inputValue1, inputValue2);
+		if (outVal == Number.POSITIVE_INFINITY) {
+			outElem.innerHTML = "&infin;";
+		}
+		else if (outVal == Number.NEGATIVE_INFINITY) {
+			outElem.innerHTML = "-&infin;";
+		}
+		else {
+			outElem.innerHTML = outVal;
+		}
 	}
 	else {
 		// Make the output the input
 		if (inputStr2 != "") {
 			outElem.innerHTML = inputStr2;
 		}
-		else if (inputStr1 == "") {
-			outElem.innerHTML = defaultOperand;
-		}
+		// else
 	}
 	inElem.innerHTML = "";
 	nextFunction = f;
@@ -214,11 +232,26 @@ function equals() {
 	let inElem = document.getElementById('calc-input');
 	let outElem = document.getElementById('calc-result');
 	let inputStr1 = outElem.innerHTML;
-	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputStr2 = inElem.innerHTML;
+	if (inputStr1 == "") {
+		inputStr1 = "0";
+	}
+	if (inputStr2 == "") {
+		inputStr2 = "0";
+	}
+	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputValue2 = Number.parseFloat(inputStr2);
 	if (nextFunction != null) {
-		outElem.innerHTML = nextFunction(inputValue1, inputValue2);
+		let outVal = nextFunction(inputValue1, inputValue2);
+		if (outVal == Number.POSITIVE_INFINITY) {
+			outElem.innerHTML = "&infin;";
+		}
+		else if (outVal == Number.NEGATIVE_INFINITY) {
+			outElem.innerHTML = "-&infin;";
+		}
+		else {
+			outElem.innerHTML = outVal;
+		}
 	}
 	else {
 		// Make the output the input
