@@ -37,7 +37,10 @@ function setOutActive(active) {
 
 function clearCalc(result=true) {
 	document.getElementById('calc-input').innerHTML = "";
-	if (result) { document.getElementById('calc-result').innerHTML = ""}
+	if (result) {
+		document.getElementById('calc-result').innerHTML = "0";
+		nextFunction = null;
+	}
 	console.log("Clearing");
 }
 
