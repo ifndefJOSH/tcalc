@@ -176,10 +176,15 @@ sup {
 }
 
 #calc-input, #calc-result {
-	display: flex;
 	padding: 10px;
-	justify-content: right;
 	transition: all 0.1s ease-in;
+	display: inline-block;
+	overflow-x: auto;
+}
+
+.number-wrapper {
+	display: flex;
+	justify-content: right;
 }
 
 #numbers {
@@ -188,8 +193,18 @@ sup {
 	flex-direction: column;
 }
 
+#op {
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 4vh;
+	font-size: 3vh;
+	color: var(--color-two);
+}
+
 .active-number {
-	font-size: min(6vh, 6vw);
+	font-size: 6vh;
 /* 	max-width: 100%; */
 }
 

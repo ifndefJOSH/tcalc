@@ -84,18 +84,23 @@ function setUpNumbers() {
 			}
 			else if (val == "+") {
 				operatorTwoOperands(function(i, j) { return i + j; }, 0);
+				document.getElementById("op").innerHTML = "+";
 			}
 			else if (val == "-") {
 				operatorTwoOperands(function(i, j) { return i - j; }, 0);
+				document.getElementById("op").innerHTML = "-";
 			}
 			else if (val == "*" || val == "x") {
 				operatorTwoOperands(function(i, j) { return i * j; });
+				document.getElementById("op").innerHTML = "&times;";
 			}
 			else if (val == "/") {
 				operatorTwoOperands(function(i, j) { return i / j; });
+				document.getElementById("op").innerHTML = "&div;";
 			}
 			else if (val == "^") {
 				operatorTwoOperands(function(i, j) { return i ** j; }, 2);
+				document.getElementById("op").innerHTML = "x<sup>y</sup>";
 			}
 		}
 	};
@@ -128,22 +133,27 @@ function setUpOperators() {
 	// divide operator
 	document.getElementById("divide").onclick = function() {
 		operatorTwoOperands(function(i, j) { return i / j; });
+		document.getElementById("op").innerHTML = "&div;";
 	}
 	// multiply operator
 	document.getElementById("mult").onclick = function() {
 		operatorTwoOperands(function(i, j) { return i * j; });
+		document.getElementById("op").innerHTML = "&times;";
 	}
 	// Add operator
 	document.getElementById("add").onclick = function() {
 		operatorTwoOperands(function(i, j) { return i + j; }, 0);
+		document.getElementById("op").innerHTML = "+";
 	}
 	// Subtract operator
 	document.getElementById("sub").onclick = function() {
 		operatorTwoOperands(function(i, j) { return i - j; }, 0);
+		document.getElementById("op").innerHTML = "-";
 	}
 	// exponent operator
 	document.getElementById("exp").onclick = function() {
 		operatorTwoOperands(function(i, j) { return i ** j; }, 2);
+		document.getElementById("op").innerHTML = "x<sup>y</sup>";
 	}
 }
 
@@ -163,6 +173,7 @@ function operatorOneOperand(f) {
 	inElem.innerHTML = ""
 	setOutActive(true);
 	// calculationComplete = false;
+	document.getElementById("op").innerHTML = "";
 }
 
 function operatorTwoOperands(f, defaultOperand = 1) {
@@ -173,8 +184,12 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 		// calculationComplete = false;
 	}
 	let inputStr1 = outElem.innerHTML;
-	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputStr2 = inElem.innerHTML;
+	if (inputStr2 == "") {
+		nextFunction = f;
+		return;
+	}
+	let inputValue1 = Number.parseFloat(inputStr1);
 	let inputValue2 = Number.parseFloat(inputStr2);
 	if (nextFunction != null) {
 		outElem.innerHTML = nextFunction(inputValue1, inputValue2);
@@ -184,7 +199,7 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 		if (inputStr2 != "") {
 			outElem.innerHTML = inputStr2;
 		}
-		else {
+		else if (inputStr1 == "") {
 			outElem.innerHTML = defaultOperand;
 		}
 	}
@@ -209,6 +224,7 @@ function equals() {
 	inElem.innerHTML = "";
 	setOutActive(true);
 	nextFunction = null;
+	document.getElementById("op").innerHTML = "";
 	// calculationComplete = true;
 }
 

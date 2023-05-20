@@ -9,6 +9,7 @@
 	<title>TCalc - A JavaScript Calculator</title>
 </head>
 <body>
+	<div id="op"></div>
 	<div id=calc-type>
 		<span id="sandwich" class="sandwich sandwich-closed" onclick="toggleSandwich()"></span>
 <!-- 		<span id="calc-type-name">Standard</span> -->
@@ -16,8 +17,8 @@
 <!-- 	<button>A Button</button> -->
 	<div id=calculator>
 	<div id=numbers>
-	<div id="calc-input" class="active-number"></div>
-	<div id="calc-result" class="inactive-number">0</div>
+	<div class="number-wrapper"><div id="calc-input" class="active-number"></div></div>
+	<div class="number-wrapper"><div id="calc-result" class="inactive-number">0</div></div>
 	</div>
 	<div id=buttons>
 	<!-- First row -->
