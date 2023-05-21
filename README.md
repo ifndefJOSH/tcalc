@@ -21,3 +21,7 @@ cargo tauri build
 # Builds for a specific platform
 cargo tauri build --target <your target>
 ```
+
+Oh, here's a screenshot. Currently only dark mode supported.
+
+![Tcalc](screenshot.gif)
