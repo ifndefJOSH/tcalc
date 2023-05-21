@@ -64,7 +64,11 @@ function enterDigitOrPt(inpt) {
 function backSpace() {
 	console.log("Backspacing");
 	let inElement = document.getElementById('calc-input');
-	if (inElement.innerHTML == "") { return; }
+	if (inElement.innerHTML == "") {
+		nextFunction = null;
+		document.getElementById("op").innerHTML = "";
+		return;
+	}
 	inElement.innerHTML = inElement.innerHTML.substring(0, inElement.innerHTML.length - 1);
 	if (sandwichOpened) {
 		toggleSandwich();
@@ -92,10 +96,12 @@ function setUpNumbers() {
 				enterDigitOrPt(val);
 			}
 			else if (val == "+") {
+				if (tryUnaryNegPos("+")) { return; }
 				operatorTwoOperands(function(i, j) { return i + j; }, 0);
 				document.getElementById("op").innerHTML = "+";
 			}
 			else if (val == "-") {
+				if (tryUnaryNegPos("-")) { return; }
 				operatorTwoOperands(function(i, j) { return i - j; }, 0);
 				document.getElementById("op").innerHTML = "-";
 			}
@@ -130,6 +136,19 @@ function setUpNumbers() {
 	}
 }
 
+function tryUnaryNegPos(op) {
+	if (op != "+" && op != "-") {
+		console.log("Invalid operator! " + op);
+	}
+	let inElem = document.getElementById('calc-input');
+	let outElem = document.getElementById('calc-result');
+	if (inElem.innerHTML == "" && outElem.innerHTML == "") {
+		inElem.innerHTML += op;
+		return true;
+	}
+	return false;
+}
+
 function setUpOperators() {
 	// Square operator
 	document.getElementById("sqr").onclick = function() {
@@ -151,11 +170,13 @@ function setUpOperators() {
 	}
 	// Add operator
 	document.getElementById("add").onclick = function() {
+		if (tryUnaryNegPos("+")) { return; }
 		operatorTwoOperands(function(i, j) { return i + j; }, 0);
 		document.getElementById("op").innerHTML = "+";
 	}
 	// Subtract operator
 	document.getElementById("sub").onclick = function() {
+		if (tryUnaryNegPos("-")) { return; }
 		operatorTwoOperands(function(i, j) { return i - j; }, 0);
 		document.getElementById("op").innerHTML = "-";
 	}
