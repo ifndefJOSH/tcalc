@@ -232,20 +232,33 @@ sup {
 /* 	border-right: 1px solid var(--accent-medium); */
 }
 
-#menu .menu-item, #menu #menu-header {
-	width: calc(100% - 18vh);
+#menu .menu-item, #menu #menu-header, #nohist-label {
+	width: calc(100% - 22vh);
 	display: inline-block;
 	color: var(--color);
 	padding-left: 18vh;
 	padding-top: 4vh;
 	padding-bottom: 4vh;
+	margin-right: 4vh;
+	border-radius: 0px 30px 30px 0px;
+	font-size: 4vh;
 }
 
-#menu .menu-item {
+#menu .menu-item, #nohist-label {
 	font-weight: normal;
+	overflow-x: hidden;
+}
+
+#nohist-label {
+	color: var(--color-two) !important;
 }
 
 #menu .menu-item:hover {
 	background-color: var(--background-three);
 	cursor: pointer;
+}
+
+#calc-history {
+	overflow-y: auto;
+	max-height: calc(100% - 12vh);
 }

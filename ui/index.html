@@ -24,8 +24,8 @@
 	<!-- First row -->
 	<span class="calculator-button row-one col-one" id="clear-e" onclick="clearCalc(false)">CE</span>
 	<span class="calculator-button row-one col-two" id="clear" onclick="clearCalc()">C</span>
-	<span class="calculator-button row-one col-three disabled" id="left-paren">(</span>
-	<span class="calculator-button row-one col-four disabled" id="right-paren">)</span>
+	<span class="calculator-button row-one col-three" id="e" onclick="e()">e</span>
+	<span class="calculator-button row-one col-four" id="pi" onclick="pi()">&pi;</span>
 	<!-- Second Row -->
 	<span class="calculator-button row-two col-one" id="exp">x<sup>y</sup></span>
 	<span class="calculator-button row-two col-two" id="sqr">x<sup>2</sup></span>
@@ -55,8 +55,9 @@
 	</div>
 	<div id=menu>
 		<div id=menu-header>TCalc</div>
-		<a class=menu-item onclick="e()">Insert Euler's Number</a>
-		<a class=menu-item onclick="pi()">Insert Pi</a>
+		<div id="calc-history">
+			<span id="nohist-label">Your calculator history will appear here</span>
+		</div>
 	</div>
 	<script>
 setUpNumbers();

@@ -197,7 +197,7 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 	let inputStr1 = outElem.innerHTML;
 	let inputStr2 = inElem.innerHTML;
 	if (inputStr1 == "") {
-			outElem.innerHTML = defaultOperand;
+		outElem.innerHTML = defaultOperand;
 	}
 	if (inputStr2 == "") {
 		nextFunction = f;
@@ -220,7 +220,7 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 	else {
 		// Make the output the input
 		if (inputStr2 != "") {
-			outElem.innerHTML = inputStr2;
+			outElem.innerHTML = inputValue2;
 		}
 		// else
 	}
@@ -255,23 +255,35 @@ function equals() {
 	}
 	else {
 		// Make the output the input
-		outElem.innerHTML = inputStr2;
+		outElem.innerHTML = inputValue2;
 	}
 	inElem.innerHTML = "";
 	setOutActive(true);
 	nextFunction = null;
 	document.getElementById("op").innerHTML = "";
 	// calculationComplete = true;
+	// Add this to the history
+	console.log("adding element to history");
+	document.getElementById("calc-history").innerHTML += "<a class=menu-item onclick='insertValue(" + outElem.innerHTML + ")'>" + outElem.innerHTML + "</a>";
+	document.getElementById("nohist-label").style.display = "None";
 }
 
 function e() {
 	document.getElementById('calc-input').innerHTML = Math.E;
 	setOutActive(false);
-	toggleSandwich();
+	// toggleSandwich();
 }
 
 function pi() {
 	document.getElementById('calc-input').innerHTML = Math.PI
 	setOutActive(false);
-	toggleSandwich();
+	// toggleSandwich();
+}
+
+function insertValue(value) {
+	document.getElementById('calc-input').innerHTML = value;
+	setOutActive(false);
+	if (sandwichOpened) {
+		toggleSandwich();
+	}
 }
