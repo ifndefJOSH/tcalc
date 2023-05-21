@@ -232,16 +232,18 @@ sup {
 /* 	border-right: 1px solid var(--accent-medium); */
 }
 
-#menu .menu-item, #menu #menu-header, #nohist-label {
-	width: calc(100% - 22vh);
+#menu .menu-item, #menu #menu-header, #nohist-label, #menu-lower-header {
+	width: calc(100% - 26vh);
 	display: inline-block;
 	color: var(--color);
 	padding-left: 18vh;
 	padding-top: 4vh;
 	padding-bottom: 4vh;
 	margin-right: 4vh;
+	padding-right: 4vh;
 	border-radius: 0px 30px 30px 0px;
 	font-size: 4vh;
+	text-decoration: none;
 }
 
 #menu .menu-item, #nohist-label {
@@ -253,12 +255,19 @@ sup {
 	color: var(--color-two) !important;
 }
 
-#menu .menu-item:hover {
+#menu .menu-item:hover, #menu-lower-header:hover {
 	background-color: var(--background-three);
 	cursor: pointer;
 }
 
 #calc-history {
 	overflow-y: auto;
-	max-height: calc(100% - 12vh);
+	/* Each entry is 12vh. This leaves space for top and bottom elements */
+	max-height: calc(100% - 24vh - 5px);
+}
+
+#menu-lower-header {
+	display: block !important;
+	position: fixed;
+	bottom: 5px;
 }

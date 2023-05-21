@@ -56,6 +56,9 @@ function enterDigitOrPt(inpt) {
 	if (/^\d+$/.test(inpt)) {
 		inElement.innerHTML += inpt;
 	}
+	if (sandwichOpened) {
+		toggleSandwich();
+	}
 }
 
 function backSpace() {
@@ -63,6 +66,9 @@ function backSpace() {
 	let inElement = document.getElementById('calc-input');
 	if (inElement.innerHTML == "") { return; }
 	inElement.innerHTML = inElement.innerHTML.substring(0, inElement.innerHTML.length - 1);
+	if (sandwichOpened) {
+		toggleSandwich();
+	}
 }
 
 function setUpNumbers() {
@@ -161,6 +167,9 @@ function setUpOperators() {
 }
 
 function operatorOneOperand(f) {
+	if (sandwichOpened) {
+		toggleSandwich();
+	}
 	// console.log("operatorOneOperand");
 	// Ignores the last result and uses the current input buffer
 	let inElem = document.getElementById('calc-input');
@@ -229,6 +238,9 @@ function operatorTwoOperands(f, defaultOperand = 1) {
 }
 
 function equals() {
+	if (sandwichOpened) {
+		toggleSandwich();
+	}
 	let inElem = document.getElementById('calc-input');
 	let outElem = document.getElementById('calc-result');
 	let inputStr1 = outElem.innerHTML;
